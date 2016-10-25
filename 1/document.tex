@@ -68,7 +68,7 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 % #
 % #####
 
-\newcommand{\HEADER}[0]{H-BRS, WS 2015 / 2016}
+\newcommand{\HEADER}[0]{H-BRS, WS 2016 / 2017}
 \newcommand{\PAGENUMBERS}[0]{\pagemark}
 \newcommand{\DATE}[0]{31.10.2016}
 
@@ -78,12 +78,12 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 \newcommand{\ZIP}[0]{53340}
 \newcommand{\TOWN}[0]{Meckenheim}
 
-\newcommand{\REFERENT}[0]{Prof. Dr. Knolle}
-\newcommand{\KOREFERENT}[0]{Prof. Dr. Max Mustermann}
+\newcommand{\REFERENT}[0]{Prof. Dr. Knolle} 
+\newcommand{\KOREFERENT}[0]{B. Mager}
 
-\newcommand{\TITLE}[0]{Thema}
+\newcommand{\TITLE}[0]{MongoDB als Datenbank für Document Stores}
 \newcommand{\COURSE}[0]{Studiengang MCS}
-\newcommand{\TYPE}[0]{Projektarbeit}
+\newcommand{\TYPE}[0]{Schemalose Datenbank}
 \newcommand{\COMPLETION}[0]{Master of Science}
 
 % #####
@@ -108,7 +108,7 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 \input{abstract}
 
 % load the preamble
-\input{preamble}
+%\input{preamble}
 
 % loads the fancy pagestyle for register part
 \input{fancyRegisterPart}
@@ -137,30 +137,30 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 % #####
 % # load the appendix from the files
 % #####
-\input{appendix}
+% \input{appendix}
 
 % #####
 % # list of table, list of figures, and list of listings in ToC
 % #####
-\newpage
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
-\listoffigures
-\newpage
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
-\listoftables
-\newpage
-\addcontentsline{toc}{chapter}{Listings}
-\lstlistoflistings
+%\newpage
+%\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+%\listoffigures
+%\newpage
+%\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+%\listoftables
+%\newpage
+%\addcontentsline{toc}{chapter}{Listings}
+%\lstlistoflistings
 
 % #####
 % # List of Abbreviations
 % #####
-\phantomsection 
-\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
-\renewcommand\refname{Abkürzungsverzeichnis} 
-\chapter*{Abkürzungsverzeichnis}
-\input{abbreviations}
-\newpage
+%\phantomsection 
+%\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+%\renewcommand\refname{Abkürzungsverzeichnis} 
+%\chapter*{Abkürzungsverzeichnis}
+%\input{abbreviations}
+%\newpage
 
 % #####
 % # load the bibliography
@@ -170,6 +170,6 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 % #####
 % # load the sworn declaration
 % #####
-\input{declaration}
+%\input{declaration}
 % end of the document
 \end{document}
