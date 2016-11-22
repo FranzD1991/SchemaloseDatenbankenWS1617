@@ -2,11 +2,14 @@
 \subsection{Einleitung}
 Schemalose NoSQL Datenbanksysteme werden in der heutigen Zeit immer öfters verwendet, dank ihrer Flexibilität, Geschwindigkeit und Verlässlichkeit. MongoDB ist ein schemaloses Datenbanksystem, die auf Dokumentenspeicherung basiert. Diese Dokumente von MongoDB speichern die Daten in einem JSON ähnlichen, nämlich BSON (Binary JSON), was speziell für MongoDB erstellt wurde, Format. Hierbei spielt es keine Rolle, wie die Daten aufgebaut sind, die in das Dokument eingetragen werden. Dokumente in MongoDB werden in Collections gespeichert. Jede Collection fügt einem Dokument eine eindeutige ID zu.  Die Dateigröße für Dokumente beträgt maximal 16MB. Eine Ansammlung von Collections stellt die Datenbank dar.
 Der Aufbau von einer Datenbank in MongoDB sieht wie folgt aus:
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[scale=1]{images/Datenmodell_Mongo.jpg}  
-	\caption{Datenbankstruktur von MongoDB}
-\end{figure}
+\\
+Bild: Datenbankstruktur
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.7]{images/Datenmodell_Mongo.jpg}  
+%	\caption{Datenbankstruktur von MongoDB}
+%\end{figure}
+\\
 Die Collection kann man wie eine Tabelle in einer relationalen Datenbank ansehen und die Dokumente sind die jeweiligen Reihen, also die konkrete Dateneintragungen in die Tabelle.
 \subsection{Geschichte}
 MongoDB wurde von Dwight Merriman, Eliot Horowitz und seinem Team erstellt. Doch dies nicht auf direktem Wege. 2007 plante das MongoDB Team ein Onlineservice für Web-Anwendungen. Dieser Service sollte die Möglichkeit bieten, eine Web-Anwendung zu entwickeln, zu hosten und zu skalieren. Aufgrund von einem nicht geeigneten Datenbanksystem entschloss sich das Team ein eigenes Datenbanksystem zu erstellen und zu nutzen. Diese hatte noch keinen Namen, da dieses System speziell für den Service des Teams erstellt wurde. Im Jahre 2008 wurde dann das Datenbanksystem fertiggestellt. 2009 entschloss sich das Team, dieses Datenbanksystem, was sie erstellt haben, als Open Source Produkt freizugeben. Dieses System wurde als MongoDB veröffentlicht. März 2010 kam die erste Version von MongoDB heraus, die man in einem größeren Umfang verwenden kann. Über die Jahre wurde MongoDB von dem Team weiterentwickelt und ist zurzeit mit der Version 3.2 veröffentlicht. 
@@ -40,62 +43,67 @@ Die Referenzierung von MongoDB unterscheidet sich von der Referenzierung von den
 \subsubsection{Replikation}
 Eine Replikation bei MongoDB ist die Kopie von Daten auf weiteren Servern. Dies nennt man replica set. Ein replica set umfasst Server mit derselben Funktionalität und Dient zur Stabilisierung der Aufgabe des jeweiligen replica sets. Die MongoDB Website empfiehlt das Verwenden von drei Servern pro replica set, um somit die Ausfallrate gering zu halten. Die Daten in einem replica set sind auf allen Servern identisch. MongoDB verwendet das Master-Slave System für die Replikation von Daten innerhalb des replica sets. In dem replica set gibt es genau einen Primary und beliebig viele Secondary Server und ggf. einen Arbiter. Datenänderungen wie z.B. Schreiboperationen werden auf dem Primary Server in dem replica set durchgeführt. Nachdem die Operation erfolgreich beendet wurde, übernehmen die Secondary Server die Änderung von dem Primary Server. Sollte der Primary Server ausfallen, so wählen die Secondary Server einen neuen Primary Server aus. Man ist in der Lage, in dem replica set einen Arbiter hinzuzufügen. Ein Arbiter besitzt nicht die Daten, die in dem replica set verteilt werden. Der Arbiter dient lediglich dazu, nur bei einer Abstimmung eine Stimme abzugeben, damit eventuelle Probleme bei einer Abstimmung vermieden werden können. Ein Arbiter selber kann nicht zu einem Primary oder Secondary Server ernannt werden.
 \\
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[scale=1]{images/replica-set-read-write-operations-primary.jpg}  
-	\caption{Replikationsaufbau von MongoDB}
-\end{figure}
+Bild: Replikationsaufbau
 \\
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.7]{images/replica-set-read-write-operations-primary.jpg}  
+%	\caption{Replikationsaufbau von MongoDB}
+%\end{figure}
 \subsubsection{Cluster Sharding}
 Ein sharded Cluster bei MongoDB ist eine Methode, um Daten auf unterschiedlichen Servern zu speichern und dann diese schnell aufzurufen. Ein sharded cluster besteht aus drei Komponenten: Den Config Server, den Query Server und Shards. Um ein sharded cluster einzurichten, braucht man mindestens einen Config Server, einen Query Server und 2 Shards. Dies sieht dann wie folgt aus:
 \\
-\begin{figure}[hbt]
-	\centering
- 	\includegraphics[scale=1]{images/sharded-cluster-production-architecture.jpg} 
-	\caption{Aufbau vom Cluster Sharding in MongoDB}
-\end{figure}
-\\
+Bild: Aufbau vom Cluster Sharding in MongoDB
+%\begin{figure}[h]
+%	\centering
+% 	\includegraphics[scale=0.7]{images/sharded-cluster-production-architecture.jpg} 
+%	\caption{Aufbau vom Cluster Sharding in MongoDB}
+%\end{figure}
 Config Server: Der Config Server in einem sharded Cluster beinhaltet die Metadaten für dieses. Diese Metadaten beinhalten die Informationen zu der Organisation und die Zustände der jeweiligen Komponenten in dem sharded Cluster.  Ein Config Server ist in einem replica set. Ein replica set verbessert die Konsistenz über die verschiedenen Config Server. Zusätzlich kann man danke dem replica set mehr als 3 Config Server nutzen.
 Query Server (Router): Mit dem Query Server ist man in der Lage, Daten auf den verschiedenen Shards zu schreiben und zu Lesen. Dies vollbringt er mit den Metadaten, die der Query Server von dem Config Server bekommt. Der Query Server ist die einzige Schnittstelle in dem sharded Cluster, womit man auf die Daten durch Anwendungen zugreifen kann. 
 \\
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[scale=1]{images/sharded-cluster-scatter-gather-query.jpg} 
-	\caption{Datenverteilung von dem Query Server}
-\end{figure}
+Bild: Datenverteilung von dem Query Server
 \\
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.7]{images/sharded-cluster-scatter-gather-query.jpg} 
+%	\caption{Datenverteilung von dem Query Server}
+%\end{figure}
 Shard: Bei einer Shard handelt es sich um einen Teil der Gesamtdatenbank. Die Daten, die in die Datenbank eingetragen werden, werden nach den Metadaten des Configservers analysiert und dann durch den Query Server auf das jeweilige Shard gespeichert. Zum Beispiel: Eine 3 Shard Datenbank beinhaltet Daten von Personen in einem Unternehmen. Auf Shard 1 werden alle Mitarbeiter gespeichert, die im Nachnamen mit dem Buchstaben A bis H anfangen. Shard 2 hat den Nachnamen von I bis Q und Shard 3 R bis Z. Dadurch, dass die Daten aufgeteilt und auf unterschiedlichen Shards gespeichert werden, ist man in der Lage schneller an die gewünschten Informationen zu kommen. Shards können sich in einem replica set befinden. Dieses dient für Redundanz  und hohe Verfügbarkeit der Daten.
 \subsection{Verwendung}
 Um mit MongoDB Daten einzufügen oder auszulesen, sind verschiedene CRUD-Operationen notwendig, wie bei einer relationellen Datenbank. Diese Operationen ähneln wie JavaScript Anweisungen und sind daher leicht anzuwenden. Dies sind die wichtigsten Befehle zur Verwendung von MongoDB:
 \\
-\begin{table}
-\centering
-\begin{tabular}{p{7cm}|p{7cm}|c|c|}
-\hline 
-Befehl & Funktion \\ 
-\hline 
-Use <Datenbankname> & Setzt die Datenbank zu den benutzten Namen \\ 
-\hline 
-db.createCollection(„Name“,{capped : true, size : <byte>, max : <anzahl> }) & Legt eine Collection mit dem angegebenen Namen \\ 
-\hline 
-db.<name>.insert({Name: „Thomas“, Alter: 25, …})  & Legt ein Dokument in der Collection <name> ab \\ 
-\hline 
-db.<name>.save({Name: „Thomas“, Alter: 22}) & Einfache Veränderung eines Dokumentes mit dem Namen “Thomas” \\ 
-\hline 
-db.<name>.update({Name: „Thomas“}, {Name: „Franz“ , Alter: 24}) & Veränderung eines Dokumentes mit dem Namen „Thomas“ \\ 
-\hline 
-db.<name>.find() & Zeigt alle Dokumente in der Collection <name> \\ 
-\hline 
-db.<name>.count({Name: „Franz“}) & Zählt alle Dokumente, die den Namen “Franz” beinhalten \\ 
-\hline 
-db.<name>.remove({Name: “Franz”}) & Löscht alle Dokumente mit dem Namen “Franz” \\ 
-\hline 
-db.<name>.drop() & Die Collection löschen \\ 
-\hline 
-\end{tabular}
-\caption{Befehlsliste für MongoDB}
-\end{table} 
+Tabelle: Befehlsliste für MongoDB
 \\
+%\\
+%\begin{table}
+%\centering
+%\begin{tabular}{p{7cm}|p{7cm}|c|c|}
+%\hline 
+%Befehl & Funktion \\ 
+%\hline 
+%Use <Datenbankname> & Setzt die Datenbank zu den benutzten Namen \\ 
+%\hline 
+%db.createCollection(„Name“,{capped : true, size : <byte>, max : <anzahl> }) & Legt eine Collection mit dem angegebenen Namen \\ 
+%\hline 
+%db.<name>.insert({Name: „Thomas“, Alter: 25, …})  & Legt ein Dokument in der Collection <name> ab \\ 
+%\hline 
+%db.<name>.save({Name: „Thomas“, Alter: 22}) & Einfache Veränderung eines Dokumentes mit dem Namen “Thomas” \\ 
+%\hline 
+%db.<name>.update({Name: „Thomas“}, {Name: „Franz“ , Alter: 24}) & Veränderung eines Dokumentes mit dem Namen „Thomas“ \\ 
+%\hline 
+%db.<name>.find() & Zeigt alle Dokumente in der Collection <name> \\ 
+%\hline 
+%db.<name>.count({Name: „Franz“}) & Zählt alle Dokumente, die den Namen “Franz” beinhalten \\ 
+%\hline 
+%db.<name>.remove({Name: “Franz”}) & Löscht alle Dokumente mit dem Namen “Franz” \\ 
+%\hline 
+%db.<name>.drop() & Die Collection löschen \\ 
+%\hline 
+%\end{tabular}
+%\caption{Befehlsliste für MongoDB}
+%\end{table} 
+%\\
 Beim Arbeiten von MongoDB sollte stets geachtet werden, dass man auf der richtigen Datenbank arbeitet und dass die Dokumente in die richtige Collections eingetragen werden. 
 \subsection{Grenzen}
 \subsection{Zukunft}
