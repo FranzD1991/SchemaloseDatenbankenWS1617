@@ -2,10 +2,10 @@
 \subsection{Einleitung}
 Schemalose NoSQL Datenbanksysteme werden in der heutigen Zeit immer öfters verwendet, dank ihrer Flexibilität, Geschwindigkeit und Verlässlichkeit. MongoDB ist ein schemaloses Datenbanksystem, die auf Dokumentenspeicherung basiert. Diese Dokumente von MongoDB speichern die Daten in einem JSON ähnlichen, nämlich BSON (Binary JSON), was speziell für MongoDB erstellt wurde, Format. Hierbei spielt es keine Rolle, wie die Daten aufgebaut sind, die in das Dokument eingetragen werden. Dokumente in MongoDB werden in Collections gespeichert. Jede Collection fügt einem Dokument eine eindeutige ID zu.  Die Dateigröße für Dokumente beträgt maximal 16MB. Eine Ansammlung von Collections stellt die Datenbank dar.
 Der Aufbau von einer Datenbank in MongoDB sieht wie folgt aus:
-\begin{figure}
+\begin{figure}[hbt]
 	\centering
 	\includegraphics[scale=1]{images/Datenmodell_Mongo.jpg}  
-	\caption{•Datenbankstruktur von MongoDB}
+	\caption{Datenbankstruktur von MongoDB}
 \end{figure}
 Die Collection kann man wie eine Tabelle in einer relationalen Datenbank ansehen und die Dokumente sind die jeweiligen Reihen, also die konkrete Dateneintragungen in die Tabelle.
 \subsection{Geschichte}
@@ -40,7 +40,7 @@ Die Referenzierung von MongoDB unterscheidet sich von der Referenzierung von den
 \subsubsection{Replikation}
 Eine Replikation bei MongoDB ist die Kopie von Daten auf weiteren Servern. Dies nennt man replica set. Ein replica set umfasst Server mit derselben Funktionalität und Dient zur Stabilisierung der Aufgabe des jeweiligen replica sets. Die MongoDB Website empfiehlt das Verwenden von drei Servern pro replica set, um somit die Ausfallrate gering zu halten. Die Daten in einem replica set sind auf allen Servern identisch. MongoDB verwendet das Master-Slave System für die Replikation von Daten innerhalb des replica sets. In dem replica set gibt es genau einen Primary und beliebig viele Secondary Server und ggf. einen Arbiter. Datenänderungen wie z.B. Schreiboperationen werden auf dem Primary Server in dem replica set durchgeführt. Nachdem die Operation erfolgreich beendet wurde, übernehmen die Secondary Server die Änderung von dem Primary Server. Sollte der Primary Server ausfallen, so wählen die Secondary Server einen neuen Primary Server aus. Man ist in der Lage, in dem replica set einen Arbiter hinzuzufügen. Ein Arbiter besitzt nicht die Daten, die in dem replica set verteilt werden. Der Arbiter dient lediglich dazu, nur bei einer Abstimmung eine Stimme abzugeben, damit eventuelle Probleme bei einer Abstimmung vermieden werden können. Ein Arbiter selber kann nicht zu einem Primary oder Secondary Server ernannt werden.
 \\
-\begin{figure}
+\begin{figure}[hbt]
 	\centering
 	\includegraphics[scale=1]{images/replica-set-read-write-operations-primary.jpg}  
 	\caption{Replikationsaufbau von MongoDB}
@@ -49,7 +49,7 @@ Eine Replikation bei MongoDB ist die Kopie von Daten auf weiteren Servern. Dies 
 \subsubsection{Cluster Sharding}
 Ein sharded Cluster bei MongoDB ist eine Methode, um Daten auf unterschiedlichen Servern zu speichern und dann diese schnell aufzurufen. Ein sharded cluster besteht aus drei Komponenten: Den Config Server, den Query Server und Shards. Um ein sharded cluster einzurichten, braucht man mindestens einen Config Server, einen Query Server und 2 Shards. Dies sieht dann wie folgt aus:
 \\
-\begin{figure}
+\begin{figure}[hbt]
 	\centering
  	\includegraphics[scale=1]{images/sharded-cluster-production-architecture.jpg} 
 	\caption{Aufbau vom Cluster Sharding in MongoDB}
@@ -58,7 +58,7 @@ Ein sharded Cluster bei MongoDB ist eine Methode, um Daten auf unterschiedlichen
 Config Server: Der Config Server in einem sharded Cluster beinhaltet die Metadaten für dieses. Diese Metadaten beinhalten die Informationen zu der Organisation und die Zustände der jeweiligen Komponenten in dem sharded Cluster.  Ein Config Server ist in einem replica set. Ein replica set verbessert die Konsistenz über die verschiedenen Config Server. Zusätzlich kann man danke dem replica set mehr als 3 Config Server nutzen.
 Query Server (Router): Mit dem Query Server ist man in der Lage, Daten auf den verschiedenen Shards zu schreiben und zu Lesen. Dies vollbringt er mit den Metadaten, die der Query Server von dem Config Server bekommt. Der Query Server ist die einzige Schnittstelle in dem sharded Cluster, womit man auf die Daten durch Anwendungen zugreifen kann. 
 \\
-\begin{figure}
+\begin{figure}[hbt]
 	\centering
 	\includegraphics[scale=1]{images/sharded-cluster-scatter-gather-query.jpg} 
 	\caption{Datenverteilung von dem Query Server}
