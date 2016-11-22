@@ -1,22 +1,28 @@
 \BOOKMARK [0][-]{section*.1}{Zusammenfassung}{}% 1
 \BOOKMARK [0][-]{chapter.1}{Ausgew\344hlte Persistenzmodelle}{}% 2
 \BOOKMARK [1][-]{section.1.1}{Key-Value Stores}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.2}{Document Stores}{chapter.1}% 4
-\BOOKMARK [2][-]{subsection.1.2.1}{Einleitung}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.2}{Eigenschaften}{section.1.2}% 6
-\BOOKMARK [2][-]{subsection.1.2.3}{Datenmodell}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.4}{Abgrenzung JSON basierter Document Stores gegen\374ber XML basierter Document Stores}{section.1.2}% 8
-\BOOKMARK [2][-]{subsection.1.2.5}{Anwendungsf\344lle}{section.1.2}% 9
-\BOOKMARK [2][-]{subsection.1.2.6}{Bewertung}{section.1.2}% 10
-\BOOKMARK [0][-]{chapter.2}{Persistenzsysteme und Big Data Frameworks}{}% 11
-\BOOKMARK [1][-]{section.2.1}{MongoDB}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.1.1}{Einleitung}{section.2.1}% 13
-\BOOKMARK [2][-]{subsection.2.1.2}{Geschichte}{section.2.1}% 14
-\BOOKMARK [2][-]{subsection.2.1.3}{Anwendungsf\344lle}{section.2.1}% 15
-\BOOKMARK [2][-]{subsection.2.1.4}{Einrichtung}{section.2.1}% 16
-\BOOKMARK [2][-]{subsection.2.1.5}{Verwendung}{section.2.1}% 17
-\BOOKMARK [2][-]{subsection.2.1.6}{Grenzen}{section.2.1}% 18
-\BOOKMARK [2][-]{subsection.2.1.7}{Zukunft}{section.2.1}% 19
-\BOOKMARK [0][-]{chapter.3}{Ausgew\344hlte Anwendungsszenarien}{}% 20
-\BOOKMARK [1][-]{section.3.1}{Web 2.0 - Abschlussarbeiten-DB}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.2}{MongoDB}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.1.1.1}{Einleitung}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.2}{Eigenschaften}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.3}{Datenmodell}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.4}{Abgrenzung}{section.1.1}% 7
+\BOOKMARK [2][-]{subsection.1.1.5}{Anwendungsf\344lle}{section.1.1}% 8
+\BOOKMARK [2][-]{subsection.1.1.6}{Bewertung}{section.1.1}% 9
+\BOOKMARK [1][-]{section.1.2}{Document Stores}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.2.1}{Einleitung}{section.1.2}% 11
+\BOOKMARK [2][-]{subsection.1.2.2}{Eigenschaften}{section.1.2}% 12
+\BOOKMARK [2][-]{subsection.1.2.3}{Datenmodell}{section.1.2}% 13
+\BOOKMARK [2][-]{subsection.1.2.4}{Anwendungsf\344lle}{section.1.2}% 14
+\BOOKMARK [2][-]{subsection.1.2.5}{Bewertung}{section.1.2}% 15
+\BOOKMARK [0][-]{chapter.2}{Persistenzsysteme und Big Data Frameworks}{}% 16
+\BOOKMARK [1][-]{section.2.1}{MongoDB}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.1.1}{Einleitung}{section.2.1}% 18
+\BOOKMARK [2][-]{subsection.2.1.2}{Geschichte}{section.2.1}% 19
+\BOOKMARK [2][-]{subsection.2.1.3}{Anwendungsf\344lle}{section.2.1}% 20
+\BOOKMARK [2][-]{subsection.2.1.4}{Einrichtung}{section.2.1}% 21
+\BOOKMARK [2][-]{subsection.2.1.5}{Verwendung}{section.2.1}% 22
+\BOOKMARK [2][-]{subsection.2.1.6}{Grenzen}{section.2.1}% 23
+\BOOKMARK [2][-]{subsection.2.1.7}{Zukunft}{section.2.1}% 24
+\BOOKMARK [0][-]{chapter.3}{Ausgew\344hlte Anwendungsszenarien}{}% 25
+\BOOKMARK [1][-]{section.3.1}{Web 2.0 - Abschlussarbeiten-DB}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.2}{MongoDB}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter*.5}{Literaturverzeichnis}{}% 28
