@@ -25,9 +25,10 @@ Wie bereits erwähnt können in Key-Value Datenbanken verschiedenste Datentypen 
 Um die Performance zu erhöhen arbeiten die meisten Key-Value Stores mit „Sharding“. Hierbei entscheidet der Wert des Keys auf welchem Knoten bzw. Shard der Datenbank ein Datum gespeichert wird. So werden beispielsweise alle Keys, welche mit g beginnen auf einem anderen Shard gespeichert als solche, die mit a oder einem nummerischen Wert beginnen. Zusätzliche Shards können sehr einfach ergänzt werden. Um hierbei die Konsistenz nicht zu gefährden, sollte ein Knoten ausfallen, können diese Shards repliziert werden. Die einzelnen Key-Value Datenbanken bieten hierbei verschiedene Möglichkeiten an. So kann bei Riak angegeben werden, wie viele Knoten bei Schreib- und Lesezugriffen mindestens beteiligt sein müssen damit die Transaktion als erfolgreich gilt. 
 
 \subsection{Abgrenzung zu Document-Stores}
-Sehr ähnlich, Unterschied: Das Aggregat muss eine bestimmte Struktur haben, von bestimmtem Typ sein
-Mit Document sind weiter Abfragen möglich.. Hier nur per Key alle Daten dazu
-In der Praxis verschwimmt die klare Trennung
+Sehr ähnlich, Unterschied: Das Aggregat muss eine bestimmte Struktur haben/ von bestimmtem Typ sein
+Mit Document Stores sind Abfragen auf Attribute möglich. Hier nur per Key.
+In der Praxis verschwimmt die klare Trennung.
+Unfertig …
 
 \subsection{Anwendungsfälle}
 Da die Keys in den Key-Value Stores von der Anwendung verwaltet werden, können diese verschiedenen Charakter haben. Eine Möglichkeit ist diese Keys durch einen bestimmten Algorithmus, zum Beispiel eine Hashfunktion, zu generieren. Man kann den Key auch durch Benutzerinformationen, wie Email-Adresse oder User-ID generieren. Alternativ kann dieser auch aus einem Zeitstempel oder anderen Attributen erstellt werden. Dies macht Key-Value Stores attraktiv um Session Informationen, Einkaufswagen im Online-Shopping, Benutzerprofile oder Protokolldateien abzuspeichern, da diese Daten unter einem eindeutigen Key als ein Objekt gespeichert werden \cite{sadalage01}. 
