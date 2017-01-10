@@ -105,25 +105,6 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 % input the title
 \input{title}
 
-\input{abstract}
-\cite{edlich01}
-\cite{sadalage01}
-\cite{redmont01}
-\cite{Jing01}
-\cite{Bogdan01}
-\cite{Meier01}
-\cite{Fasel01}
-\cite{Meier02}
-\cite{Fasel02}
-\cite{Boicea01}
-\cite{Parker01}
-\cite{Abramova01}
-\cite{Faraj01}
-\cite{Shakuntala01}
-\cite{Hows01}
-\cite{fowler01}
-\cite{harrison01}
-
 % load the preamble
 %\input{preamble}
 
@@ -137,18 +118,26 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 \pagenumbering{arabic}
 % loads the fancy pagestyle for main part
 \input{fancyMainPart}
+%----------------------------------OUR SHIT--------------------------
+%Vorwort
+\input{p.01}
+\chapter{Ausgewählte Persistenzmodelle}
+\input{2.01.1B}
+\chapter{Ausgewählte Persistenzsysteme und Big Data Frameworks}
+\input{3.01.1D}
+\chapter{Ausgewählte Anwendungsszenarien}
+\input{4.01.1E}
+\input{4.01.1F}
+\chapter{Fazit}
+\input{5.01}
+%Eidesstattliche Erklärung
+%\input{e.01}
+%Zusammenfassung
+\input{z.01}
+%Anhänge
+%\input{a.01}
+%----------------------------------OUR SHIT--------------------------
 
-% #####
-% # load the chapter from the files
-% #
-% # TODO: create new chapter
-% #####
-\input{persistenzmodelle}
-\input{persistenzsysteme}
-\input{anwendungsszenarien}
-
-%\input{chapter1}
-%\input{chapter2}
 
 \newpage
 
@@ -186,7 +175,7 @@ keepaspectratio]{images/Logo_H-BRS_background}%
 % #####
 % # load the bibliography
 % #####
-\bibliography{bibliography}
+\bibliography{b.01}
 
 % #####
 % # load the sworn declaration
