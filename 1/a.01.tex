@@ -1,0 +1,77 @@
+\chapter{Anhänge}
+\section{Use Cases}\label{use_cases}
+
+\paragraph{Use Case 1} Als Student möchte ich herausfinden welche Professoren in der Vergangenheit Themen unterstützt haben, die mich interessieren. \\
+\emph{Input:} Thema das mich interessiert (als String). \\
+\emph{Output:} Liste mit Professoren die im Zusammenhang mit dem Thema 1., 2. oder 3. Prüfer waren. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 1},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.getCollection('abDBsimpleCSV')
+.distinct('1_Pruefer',{"Thema_der_Arbeit":/.*Thema_der_Arbeit.*/})
+\end{lstlisting}\label{lst:query1}
+
+\paragraph{Use Case 2} Als Student möchte ich wissen, welche Professoren Bachelor- und Masterthesen anbieten oder angeboten haben. \\
+\emph{Output:} Liste von allen Professoren. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 2},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.getCollection('abDBsimpleCSV').distinct('1_Pruefer',{$or:[{"1_Pruefer":{$ne:""}},{"2_Pruefer":{$ne:""}},{"3_Pruefer":{$ne:""}}]})
+\end{lstlisting}\label{lst:query2}
+
+\paragraph{Use Case 3} Als Student möchte wissen welche Themen in der Vergangenheit von einem bestimmten Professor angeboten wurden. \\
+\emph{Input:} Professorname. \\
+\emph{Output:} Liste mit Themen bei welchem der Professor Prüfer war. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 3},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.getCollection('abDBsimpleCSV').distinct('Thema_der_Arbeit',{$or:[{"1_Pruefer":"Professorname"},{"2_Pruefer":"Professorname"},{"3_Pruefer":"Professorname"}]})
+\end{lstlisting}\label{lst:query3}
+
+\paragraph{Use Case 4} Als Professor möchte ich mir die Anzahl der der erfolgreichen Abschlüsse für ein bestimmtes Semester ausgeben lassen. \\
+\emph{Input:} Semester. \\
+\emph{Output:} Anzahl der Abschlüsse. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 4},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.abDBsimpleCSV.find({$and:[{Semester: "(Semstername)", Zeugnis: 1}]}).count()
+\end{lstlisting}\label{lst:query4}
+
+\paragraph{Use Case 5} Als Student möchte ich wissen, welche Unternehmen Bachelor- und Masterthesen betreut haben. \\
+\emph{Output:} Liste aller Unternehmen. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 5},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.abDBsimpleCSV.distinct('Firma',{Firma: {$ne:""}})
+\end{lstlisting}\label{lst:query5}
+
+\paragraph{Use Case 6} Als Professor oder als Student möchte ich mir anzeigen lassen, welcher Professor bisher die meisten Abschlussarbeiten unterstützt hat. \\
+\emph{Output:} Liste mit Professoren und der Anzahl an unterstützten Abschlussarbeiten. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 6},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.abDBsimpleCSV.aggregate([{$match:{"1_Pruefer": {$not: {$size: 0}}}},{$unwind: '$1_Pruefer'}, {$group: {_id: '$1_Pruefer', Anzahl: {$sum: 1}}}, {$match: {Anzahl: {$gte: 2}}},{$sort: {Anzahl: -1}} ,{$limit:200}])
+\end{lstlisting}\label{lst:query6}
+
+\paragraph{Use Case 7} Als Professor möchte ich wissen, welche Themen bereits vorgeschlagen oder bearbeitet worden sind. \\
+\emph{Input:} Thema. \\
+\emph{Output:} Liste aller Themen die dem Input entsprechen. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 7},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.abDBsimpleCSV.distinct('Thema_der_Arbeit',{"Thema_der_Arbeit":/.*(Thema).*/})
+\end{lstlisting}\label{lst:query7}
+
+\paragraph{Use Case 8} Welche Professoren haben wieviele Arbeiten zu einem Thema betreut. \\
+\emph{Input:} Stichwort zum Thema (Such-String). \\
+\emph{Output:} Anzahl Themen mit Such-String gruppiert nach Name des Profs, sortiert nach Anzahl Themen. \\
+\emph{Query:}
+
+\begin{lstlisting}[caption={Query zu Use Case 8},language=java,captionpos=t,numbers=none, numberstyle=\tiny,breaklines=true]
+db.abDBsimpleCSV.aggregate([
+{$match:{"Thema_der_Arbeit":/.*datenbank*/}},
+{$match:{"1_Pruefer": {$not: {$size: 0}}}},
+{$unwind: '$1_Pruefer'},
+{$group: {_id: '$1_Pruefer', Anzahl: {$sum: 1}}},
+{$sort: {Anzahl: -1}} ,{$limit:200}])
+\end{lstlisting}\label{lst:query8}
