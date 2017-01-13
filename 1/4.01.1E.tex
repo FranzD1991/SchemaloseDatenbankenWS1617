@@ -1,7 +1,7 @@
 \section{Web 2.0 - Abschlussarbeiten-DB}
 Im Rahmen dieses Projektes ist ein relationales Schema und eine Menge an Datens\"atzen gegeben. Ziel ist es, dieses in eine NoSQL Lösung zu übertragen und die Datens\"atze in der Datenbank zu persistieren.
 
-\subsection{Das semantische Schema}
+\paragraph{Das semantische Schema}
 In der Abbildung \ref{fig:schema1} ist das Schema der Datenbank zu sehen, die in den g\"angigen NoSQL Techniken umgesetzt werden sollen. Eine Abschlussarbeit wird von einem "'Student"' oder einem "'Trainee"' geschrieben. Sowohl der "'Student"', als auch der "'Trainee"', als auch der "'Examiner"', als auch der "'Supervisor"' sind Unterklassen der Klasse "'Human"'. In Auftrag gegeben wird die Arbeit von einer "'Organisation"', die eine "'University"' oder eine "'Company"' sein kann. Die Arbeit wird eventuell von einer Menge von "'First\_Examiner"' und einer Menge von "'Second\_Examiner"' begutachtet, wenn es zu einem "'Degree"' f\"uhrt. Das mit dem "'Degree\_Topic"' verbundene "'Degree"' hat einen Titel. Das "'Topic"' kann in einer "'Topic\_Category"' liegen, in der gegebenenfalls auch der "'examiner"' oder die "'Company"' liegen. Dies bedeutet, die zentrale Klasse ist das "'Topic"', dass entweder ein "'Degree\_Topic"' oder ein "'Trainee\_Topic"' ist. Hierbei ist das "'Degree\_Topic"' wiederum entweder die "'Bachelor\_Thesis"' oder die "'Master\_Thesis"'.\\
 
 Das Schema deutet also an, dass ein Mensch, der eine Abschlussarbeit schreibt, entweder ein Auszubildender oder ein Student ist. Diese Abschlussarbeit schreibende Person schreibt die Arbeit entweder im Rahmen einer Ausbildung oder im Rahmen eines Studiums, der mit einem Abschluss ("'Degree"') belegt ist. Fasst man dies zusammen h\"atte man eine Tabelle in der Informationen zu Abschlussarbeiten gespeichert sind. Diese enthalten neben dem "'Topic"' der Arbeit auch weitere Informationen zu den Umst\"anden. Insgesamt sind 27 Klassen gegeben, auf denen 36 Attribute verteilt sind.\\
@@ -12,8 +12,8 @@ Das Schema deutet also an, dass ein Mensch, der eine Abschlussarbeit schreibt, e
 	\caption{AbschlussarbeitenDB Schema}\label{fig:schema1}
 \end{figure}
 
-\subsection{Die Datenbestände}
-Die Tats\"achlichen Daten unterscheiden sich stark von den in dem Schema \ref{fig:schema1} dargestellten Sachverhalten. Wie in Abbildung \ref{fig:schema2} zu sehen gibt es insgesamt 21 Spalten. Insgesamt umfasst die Datenbasis 1637 Datensätze. \\
+\paragraph{Die Datenbest\"ande}
+Die tats\"achlichen Daten unterscheiden sich stark von den in dem Schema \ref{fig:schema1} dargestellten Sachverhalten. Wie in Abbildung \ref{fig:schema2} zu sehen gibt es insgesamt 21 Spalten. Insgesamt umfasst die Datenbasis 1637 Datensätze. \\
 
 \begin{figure}[H]
 	\centering
