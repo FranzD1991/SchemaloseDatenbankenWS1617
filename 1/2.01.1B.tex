@@ -77,13 +77,13 @@ Sei \ref{fig:doc2} die Darstellung einer relationalen Datenbank mit Filmen und S
 In einer relationalen Datenbank würde es eine Tabelle mit Filmen und eine Tabelle mit Schauspielern geben, die zu einer gemeinsamen Tabelle gejoint werden würden um anzuzueigen welcher Schauspieler bei welchem Film mitgewirkt hat. Mithilfe von Document-Stores wäre dieses Schema so auch möglich, jedoch gibt es hierfür einen besseren Ansatz. Da Document-Stores grundsätzlich keine Join-Operationen ermöglichen und Entwickler es bevorzugen wenn die JSON Strukturen sich nah an dem objektorientierten Programmentwurf orientieren, bietet sich ein Entwurf nach \ref{fig:doc1} eher an \cite{harrison01}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.75]{images/01docstores_1.jpg}
+	\includegraphics[scale=0.3]{images/01docstores_1.jpg}
 	\caption{Beispiel eines JSON-Dokuments}\label{fig:doc1}
 \end{figure}
 Wie in der Abbildung \ref{fig:doc1} zu sehen, befindet sich ein Array von Schauspieler Dokumenten in dem Film Dokument. Dieser Design-Entwurf, der Document-Embedding genannt wird, hat den Vorteil, dass hierdurch auf aufwendige Join-Operationen verzichtet werden kann. Nachteil hierbei ist jedoch, dass die Schauspieler in vielen Dokumenten auftauchen und somit redundant sind. Sollte zudem eines der Schauspieler Attribute verändert werden müssen kann dies zu Inkonsistenzen führen. Ein weiteres Problem kann auftreten, wenn beispielsweise eine unbegrenzte Anzahl an Schauspielern möglich sein soll, da Dokumente in der Regel begrenzt sind. Um dieses Problem zu lösen besteht jedoch die Möglichkeit Indizes zu verwenden \cite{harrison01}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{images/01docstores_3.jpg} 
+	\includegraphics[scale=0.2]{images/01docstores_3.jpg} 
 	\caption{Beispiel eines JSON-Dokuments}\label{fig:doc3}
 \end{figure}
 In Abbildung \ref{fig:doc3} ist zu sehen, wie ein solches System aussehen könnte. 
