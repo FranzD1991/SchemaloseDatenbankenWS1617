@@ -141,7 +141,7 @@ Jetzt da der Mongod Service gestartet wurde, k\"onnen wir nun unsere Beispieldat
 use abDB
 \\
 \\
-Nun k\"onnen wir mit "db.createCollection()" eine Collection f\"ur unsere Beispieldatenbank erstellen. Der ganze Befehl denn wir verwendet haben lautet:
+Nun k\"onnen wir mit ``db.createCollection()`` eine Collection f\"ur unsere Beispieldatenbank erstellen. Der ganze Befehl denn wir verwendet haben lautet:
 \\
 \\
 db.createCollection(‚abDBsimpleCSV‘,{capped:true,size:1024,max:3000})
@@ -266,7 +266,7 @@ sh.addShard(“abDBrs2/10.20.110.48:27024“) \\
 sh.enableSharding(“abDB“)
 \\
 \\
-Nun wurde MongoDB auf Ubuntu installiert und das Sharding f\"ur die Datenbank "abDB" eingerichtet.\cite{mongo01}
+Nun wurde MongoDB auf Ubuntu installiert und das Sharding f\"ur die Datenbank ``abDB`` eingerichtet.\cite{mongo01}
 \subsection{Datenschema}
 Uns wurde eine CSV Datei bereitgestellt, die von dem Schema der relationellen Abschlussarbeitendatenbank entnommen wurde. Da die \"Ubername von dem relationellen Schema in MongoDB wenig Sinn ergibt, haben wir das Schema angepasst, damit es besser und effektiver von MongoDB verwaltet werden kann. Zuerst stellt sich die Frage: Wie viele Collections verwenden wir, um die Daten der Abschlussarbeitendatenbank in MongoDB darstellen zu k\"onnen. Wir haben uns dazu entschlossen, dass wir die Abschlussarbeitendatenbank in nur einer einzigen Collection abspeichern werden. Die Gr\"unde f\"ur diese Entscheidung lauten wie folgt:
 \\
