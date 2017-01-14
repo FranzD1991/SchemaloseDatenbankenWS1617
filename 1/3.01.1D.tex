@@ -37,15 +37,13 @@ Eine Replikation bei MongoDB ist die Kopie von Daten auf weiteren Servern. Dies 
 \end{minipage}
 \subsubsection{Indexierung}
 Indizes in MongoDB dienen zur verbesserten Ausf\"uhrung von Abfragen. Durch Indizies  \"uberpr\"uft MongoDB nicht alle Dokumenten innerhalb einer Collection, sondern nur die Dokumente, die mit dem abgefragten Index versehen ist. Ohne Indizes w\"urde MongoDB immer die Collection komplett nach dem Abfragekriterium \"uberpr\"ufen. Ein Index, was MongoDB bei jeden Dokument automatisch erstellt, ist der id Index. Dieser dient dazu, jedes Dokument mit einem eindeutigen Wert zu versehen, das nur auf dieses Dokument zugewiesen werden kann, also wie ein Prim\"arschl\"ussel in relationalen Datenbanken. Um Indizes zu erstellen, wird folgender Befehl verwendet:
-\\
-\\
+\begin{lstlisting}[caption={Befehl, um eine Collection zu erstellen}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 db.collection.createIndex()
-\\
-\\
+\end{lstlisting}
 Innerhalb der Klammern kann bestimmt werden, welcher Wert als Index gew\"ahlt werden soll und welche Art von Index verwendet wird. Indizes sind an einer Collection gebunden und k\"onnen auch nur in dieser verwendet werden. Wenn man ein Index erstellt, sollte darauf geachtet werden, dass der gew\"ahlte Wert nicht bereits ein Index besitzt.  Ebenso sollte darauf geachtet werden, dass m\"oglichst viele Dokumente den Wert besitzen, der indexiert wird.\cite{mongo01}
 MongoDB bietet viele verschiedene Arten von Indizes an, die verwendet werden k\"onnen.
 \begin{itemize}
-\item Single Field Index die sich nur auf ein Wert beziehen
+\item Single Field Index die sich nur auf ein Wert beziehen 
 \item Compound Index, womit man ein Index mit mehreren Werten bestimmen kann
 \item Multikey Index mit einem Wert, der aus mehreren Werten besteht
 \item Geospatial Index f\"ur Geometrische Werte
@@ -107,46 +105,42 @@ Um MongoDB auf Ubuntu zu installieren, m\"ussen folgede Schritte durchgef\"uhrt 
 \\
 1.	Um bei Ubuntu mit apt oder dpkg MongoDB zu installieren, wird ein Public key ben\"otigt. Diesen bekommt man durch folgenden Befehl:
 \\
-\\
+\begin{lstlisting}[caption={Befehl, um den Public Key zu erhalten}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-\\
-\\
+\end{lstlisting}
+
 2.	Danach muss eine Listendatei f\"ur MongoDB erstellt werden. Diese muss die Version, die installiert wird im Namen beinhalten. Der hier verwendete Befehl lautet:
-\\
-\\
+
+\begin{lstlisting}[caption={Erstellung der Liste f\"ur die Installation}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-\\
-\\
+\end{lstlisting}
+
 3.	Bevor man MongoDB installiert, sollte der Ubuntu Server und deren Applikationen aktualisiert werden mit dem Befehl:
-\\
-\\
+
+\begin{lstlisting}[caption={Aktuallisierung des Servers}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo apt-get update
-\\
-\\
+\end{lstlisting}
+
 4.	Nachdem nun alle Vorbereitungen getroffen worden sind, kann man nun MongoDB installieren. Der Befehl hierf\"ur lautet wie folgt:
-\\
-\\
+
+\begin{lstlisting}[caption={Installation von MongoDB}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo apt-get install -y mongodb-org
-\\
-\\
+\end{lstlisting}
+
 Nachdem MongoDB installiert wurde, was einige Minuten in Anspruche nehmen kann, kann man nun MongoDB starten. Und das mit dem Befehl: 
-\\
-\\
+
+\begin{lstlisting}[caption={Starten von MongoDB}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo service mongod start
-\\
-\\
+\end{lstlisting}
+
 Jetzt da der Mongod Service gestartet wurde, k\"onnen wir nun unsere Beispieldatenbank erstellen. MongoDB erstellt automatisch eine Datenbank, sollte diese bef\"ullt werden mit Dokumenten. Um die Beispieldatenbank zu erstellen, m\"ussen wir diese erst mit dem “Use“ Befehl von MongoDB ausw\"ahlen. Da wir unsere Datenbank abDB nennen, so lautet der “Use“ Befehl:
-\\
-\\
+\begin{lstlisting}[caption={Auswahl der Datenbank}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 use abDB
-\\
-\\
+\end{lstlisting}
 Nun k\"onnen wir mit ``db.createCollection()`` eine Collection f\"ur unsere Beispieldatenbank erstellen. Der ganze Befehl denn wir verwendet haben lautet:
-\\
-\\
-db.createCollection(‚abDBsimpleCSV‘,{capped:true,size:1024,max:3000})
-\\
-\\
+\begin{lstlisting}[caption={Erstellung einer Collection}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+db.createCollection(abDBsimpleCSV,{capped:true,size:1024,max:3000})
+\end{lstlisting}
 Jetzt wird die Datenbank in MongoDB auch abgespeichert. Wie die Daten von der Datenbank auf unsere Beispieldatenbank \"ubertragen werden, wird in Kapitel 4.1.1 n\"aher erl\"autert.
 \\
 Nun da wir MongoDB auf unserem Cluster auf jedem Node gestartet und eine Datenbank angelegt wurde, k\"onnen wir nun die Konfiguration von MongoDB f\"ur das Sharding vornehmen.\cite{mongo01}
@@ -161,111 +155,90 @@ Da ein Replica Set aus mind. 3 Servern bestehen muss, verwenden wir auch 3 Serve
 \\
 \\
 1.	Verzeichnisse f\"ur Dateien und Logs vom Config Server erstellen
-\\
-\\
+\begin{lstlisting}[caption={Erstellung der Verzeichnisse}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo mkdir -p /db/config/log
-\\
 sudo mkdir -p /db/config/data
-\\
-\\
+\end{lstlisting}
 2.	Nun muss der Config Server gestartet werden:
-\\
-\\
+\begin{lstlisting}[caption={Starten von einem Config Server}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo mongod --port 27022 --dbpath /db/config/data --configsvr --replSet abDBcs --fork --logpath /db/config/log/mongodb.log
-\\
-\\
+\end{lstlisting}
 Dieser Befehl muss bei allen Config Servern durchgef\"uhrt werden, und alle m\"ussen demselben Replica Set zugewiesen werden.
 \\
 \\
 3.	Nachdem alle Config Server gestartet wurden, muss nun das Replica Set f\"ur die Config Server konfiguriert werden. Dazu m\"ussen wir zuerst in die Mongo Shell gehen. Mit der Mongo Shell ist man in der Lage, die Mongo Instanz zu bedienen. Die Mongo Shell startet man mit: 
-\\
-\\
+\begin{lstlisting}[caption={Mongo Shell für den Config Server starten}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 mongo localhost:27022
-\\
-\\
+\end{lstlisting}
 In der Mongo Shell selber kann man dann das Replica Set konfigurieren. Dieser Befehl muss nur auf einen der Config Servern durchgef\"uhrt werden:
 \\
-\\
-rs.initiate( \\
-\{ \\
-    \_id: “abDBcs“, \\
-    configsvr: true, \\
-    members: [ \\
-      \{ \_id : 0, host : “10.20.110.43:27022“ \}, \\
-      \{ \_id : 1, host : “10.20.110.41:27022“ \}, \\
-      \{ \_id : 2, host : “10.20.110.39:27022“ \} \\
-    ] \\
-  \} \\
-) \\
-\\
+\begin{lstlisting}[caption={Konfiguration des Replica Sets abDBcs}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+rs.initiate( 
+{ 
+    _id: "abDBcs", 
+    configsvr: true, 
+    members: [ 
+      { _id : 0, host : "10.20.110.43:27022" }, 
+      { _id : 1, host : "10.20.110.41:27022" }, 
+      { _id : 2, host : "10.20.110.39:27022" } 
+    ] 
+  } 
+) 
+\end{lstlisting}
 Nun sollte in dem Replica Set ein Primary und die Secondarys ausgew\"ahlt werden. Damit sollte nun der Config Server Replica Set f\"ur das Sharding bereit sein.
 \\
 Nun werden die Shards konfiguriert. Die Shards werden fast genauso wie die Config Server konfiguriert. Shard 1 wird auf Node 1, 3 und 4 installiert und sieht wie folgt aus:
 \\
 \\
 1.	Verzeichnisse f\"ur Dateien und Logs vom Shard 1 erstellen:
-\\
-\\
+\begin{lstlisting}[caption={Verzeichnisse für Shard 1 erstellen}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
 sudo mkdir -p /db/shard1/log
-\\
-sudo mkdir -p /db/shard1/data
-\\
-\\
+sudo mkdir -p /db/shard1/data 
+\end{lstlisting}
 2.	Nun m\"ussen die Server in dem Shard gestartet werden:
-\\
-\\
-sudo mongod --port 27023 --dbpath /db/shard1/data --shardsvr --replSet abDBrs1 --fork --logpath /db/shard1/log/mongodb.log
-\\
-\\
+\begin{lstlisting}[caption={Einen Server für den Shard starten}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+sudo mongod --port 27023 --dbpath /db/shard1/data --shardsvr --replSet abDBrs1 --fork --logpath /db/shard1/log/mongodb.log 
+\end{lstlisting}
 3.	Wie auch bei dem Config Server muss nun mit der Mongo Shell auf einen der Servern das Replica Set eingestellt werden:
-\\
-\\
-rs.initiate( \\
-  \{ \\
-  \_id: “abDBrs1“, \\
-    members: [ \\
-      \{ \_id : 0, host : “10.20.110.43:27023“ \}, \\
-      \{ \_id : 1, host : “10.20.110.39:27023“ \}, \\
-      \{ \_id : 2, host : “10.20.110.48:27023“ \} \\
-    ] \\
-  \} \\
-) \\
-\\
+\begin{lstlisting}[caption={Konfiguration von dem Replica Set abDBrs1}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+rs.initiate( 
+  { 
+  _id: "abDBrs1", 
+    members: [ 
+      { _id : 0, host : "10.20.110.43:27023" }, 
+      { _id : 1, host : "10.20.110.39:27023" }, 
+      { _id : 2, host : "10.20.110.48:27023" } 
+    ] 
+  } 
+) 
+\end{lstlisting}
 Shard 2 wird genauso installiert, nur das Shard 2 auf Node 2,3 und 4 installiert wird und ein eigenes Replica Set besitzt.
-\\
 \\
 Nun muss der Query Server eingerichtet werden. Um den Query Server einrichten zu k\"onnen, m\"ussen die Shards bereits eingerichtet sein. Die Schritte f\"ur die Einrichtung von dem Query Server sehen wie folgt aus:
 \\
 \\
 1.	Verzeichnis f\"ur die Log Dateien erstellen:
-\\
-\\
-sudo mkdir -p /db/query/log
-\\
-\\
+\begin{lstlisting}[caption={Verzeichnis f\"ur den Query Server erstellen}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+sudo mkdir -p /db/query/log 
+\end{lstlisting}
 2.	Nun muss der Query Server gestartet werden. Hierbei ist es wichtig anzugeben, wo sich der Config Server befindet, da der Query Server die Meta Daten von dem Config Server ben\"otigt, um das Sharding auszuf\"uhren:
-\\
-\\
-sudo mongos --configdb abDBcs/10.20.110.43:27022,10.20.110.41:27022,10.20.110.39:27022 --port 27021 --fork --logpath /db/query/log/mongodb.log
-\\
-\\
+\begin{lstlisting}[caption={Query Server starten}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+sudo mongos --configdb abDBcs/10.20.110.43:27022,10.20.110.41:27022,10.20.110.39:27022 --port 27021 --fork --logpath /db/query/log/mongodb.log 
+\end{lstlisting}
 3.	Nachdem der Query Server gestartet wurde, m\"ussen nun die Shards mit der Mongo Shell dem Query Server zugeteilt werden, hierbei muss jeder einzelne Server von einem Shard eingetragen werden:
-\\
-\\
-sh.addShard(“abDBrs1/10.20.110.43:27023“) \\
-sh.addShard(“abDBrs1/10.20.110.39:27023“) \\
-sh.addShard(“abDBrs1/10.20.110.48:27023“) \\
-\\
-sh.addShard(“abDBrs2/10.20.110.41:27024“) \\
-sh.addShard(“abDBrs2/10.20.110.39:27024“) \\
-sh.addShard(“abDBrs2/10.20.110.48:27024“) \\
-\\
+\begin{lstlisting}[caption={Befehl, um die Shards dem Query Server zuzuweisen}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+sh.addShard("abDBrs1/10.20.110.43:27023") 
+sh.addShard("abDBrs1/10.20.110.39:27023") 
+sh.addShard("abDBrs1/10.20.110.48:27023") 
+
+sh.addShard("abDBrs2/10.20.110.41:27024")
+sh.addShard("abDBrs2/10.20.110.39:27024") 
+sh.addShard("abDBrs2/10.20.110.48:27024") 
+\end{lstlisting} 
 4.	Zum Schluss muss man dem Query Server sagen, welche Datenbank auf den Shards geteilt werden soll:
-\\
-\\
-sh.enableSharding(“abDB“)
-\\
-\\
+\begin{lstlisting}[caption={Sharding f\"ur die Datenbank aktivieren}, language=java,captionpos=t,numbers=none, numberstyle=\tiny,basicstyle=\scriptsize,breaklines=true]
+sh.enableSharding("abDB") 
+\end{lstlisting}
 Nun wurde MongoDB auf Ubuntu installiert und das Sharding f\"ur die Datenbank ``abDB`` eingerichtet.\cite{mongo01}
 \subsection{Datenschema}
 Uns wurde eine CSV Datei bereitgestellt, die von dem Schema der relationellen Abschlussarbeitendatenbank entnommen wurde. Da die \"Ubername von dem relationellen Schema in MongoDB wenig Sinn ergibt, haben wir das Schema angepasst, damit es besser und effektiver von MongoDB verwaltet werden kann. Zuerst stellt sich die Frage: Wie viele Collections verwenden wir, um die Daten der Abschlussarbeitendatenbank in MongoDB darstellen zu k\"onnen. Wir haben uns dazu entschlossen, dass wir die Abschlussarbeitendatenbank in nur einer einzigen Collection abspeichern werden. Die Gr\"unde f\"ur diese Entscheidung lauten wie folgt:
